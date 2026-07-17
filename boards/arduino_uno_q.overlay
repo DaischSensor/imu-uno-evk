@@ -1,0 +1,30 @@
+/ {
+    aliases {
+        my-serial = &lpuart1;
+    };
+};
+
+&lpuart1 {
+	dmas = <&gpdma1 2 35 STM32_DMA_PERIPH_TX>,
+	       <&gpdma1 3 34 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};
+
+&flash0 {
+    partitions {
+        nvs_partition: partition@80000 {
+            label = "nvs";
+            reg = <0x00080000 0x00008000>;   /* 32 KB */
+        };
+    };
+};
+
+&timers2 {
+    status = "okay";
+    st,prescaler = <159>;  /* Set prescaler */
+    st,countermode = <0>;         /* 0 = up-counting (default) */
+    counter {
+        compatible = "st,stm32-counter";
+        status = "okay";
+    };
+};
