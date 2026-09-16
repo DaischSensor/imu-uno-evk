@@ -26,9 +26,9 @@ sudo systemctl stop arduino-router.service
 sudo systemctl disable arduino-router.service
 sudo systemctl mask arduino-router.service
 # 停止并禁用串口代理服务（占用 ttyGS0）
-sudo systemctl stop arduino-router-serial.service
-sudo systemctl disable arduino-router-serial.service
-sudo systemctl mask arduino-router-serial.service
+sudo systemctl stop arduino-router-serial.path arduino-router-serial.service
+sudo systemctl disable arduino-router-serial.path arduino-router-serial.service
+sudo systemctl mask arduino-router-serial.path arduino-router-serial.service
 # 清理其他相关服务
 sudo systemctl stop arduino-app-cli.service arduino-router.service arduino-router-serial.service
 sudo systemctl disable arduino-app-cli.service arduino-router.service arduino-router-serial.service

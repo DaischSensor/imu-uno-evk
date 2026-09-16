@@ -26,9 +26,9 @@ sudo systemctl stop arduino-router.service
 sudo systemctl disable arduino-router.service
 sudo systemctl mask arduino-router.service
 # Stop and disable the serial proxy service (occupies ttyGS0)
-sudo systemctl stop arduino-router-serial.service
-sudo systemctl disable arduino-router-serial.service
-sudo systemctl mask arduino-router-serial.service
+sudo systemctl stop arduino-router-serial.path arduino-router-serial.service
+sudo systemctl disable arduino-router-serial.path arduino-router-serial.service
+sudo systemctl mask arduino-router-serial.path arduino-router-serial.service
 # Clean up other related services
 sudo systemctl stop arduino-app-cli.service arduino-router.service arduino-router-serial.service
 sudo systemctl disable arduino-app-cli.service arduino-router.service arduino-router-serial.service
